@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: mysql:8.0.32
+    command: --default-authentication-plugin=caching_sha2_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: strongDBPassword!
+      MYSQL_DATABASE: CVSystem
+      MYSQL_USER: cvsdbadmin
+      MYSQL_PASSWORD: strongPassword!
+    volumes:
+     - ./CVSystemDB/data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
