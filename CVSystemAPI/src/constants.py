@@ -1,0 +1,1 @@
+DATABASE_URL = "mysql+pymysql://cvsdbadmin:strongPassword!@127.0.0.1:3306/CVSystem?charset=utf8mb4"
