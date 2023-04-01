@@ -1,6 +1,12 @@
 version: '3.9'
 
 services:
+  frontend:
+    build: ./CVSystemFrontend
+    ports:
+     - "4200:4200"
+    volumes:
+     - ./CVSystemFrontend/src:/app/src
 
   db:
     image: mysql:8.0.32
