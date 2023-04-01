@@ -13,6 +13,8 @@ services:
       MYSQL_PASSWORD: strongPassword!
     volumes:
      - ./CVSystemDB/data:/var/lib/mysql
+    ports:
+     - 3306:3306
 
   adminer:
     image: adminer
