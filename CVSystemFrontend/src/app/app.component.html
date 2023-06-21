@@ -2,11 +2,12 @@
   <div id="title">
     <h1 id="cvs">CV System</h1>
   </div>
-  <div *ngIf="isUserLoggedIn; else notLoggedUserNav">
+  <div *ngIf="userLoggedIn(); else notLoggedUserNav">
     <nav>
       <a class="link" routerLink="offers">Offers</a>
       <a class="link" routerLink="applications">Applications</a>
     </nav>
+    <h1 id="hello">Hello, {{loggedUserName()}}!</h1>
   </div>
 
   <ng-template #notLoggedUserNav>
@@ -18,5 +19,5 @@
   </ng-template>
 
   <br>
-  <router-outlet class="router-outlet"></router-outlet>
+  <router-outlet class="router-outlet" ></router-outlet>
 </div>

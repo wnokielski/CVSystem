@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {StateService} from "./state.service";
 
 @Component({
   selector: 'app-root',
@@ -6,17 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isUserLoggedIn = false;
 
-  login() {
-    // Logika logowania
-    // Po poprawnym zalogowaniu ustaw wartość isUserLoggedIn na true
-    this.isUserLoggedIn = true;
+  constructor(private stateService: StateService) {
   }
 
-  logout() {
-    // Logika wylogowania
-    // Po wylogowaniu ustaw wartość isUserLoggedIn na false
-    this.isUserLoggedIn = false;
+  userLoggedIn() {
+    return this.stateService.isUserLoggedIn
   }
+
+  loggedUserName() {
+    return this.stateService.userName
+  }
+
 }

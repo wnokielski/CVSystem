@@ -10,6 +10,7 @@ import { OffersComponent } from './offers/offers.component';
 import { ApplicationsComponent } from './applications/applications.component';
 import { HomeComponent } from './home/home.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {StateService} from "./state.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, StateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
