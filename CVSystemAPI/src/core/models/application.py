@@ -9,14 +9,17 @@ class Application(Base):
 
     id = Column(Integer, primary_key=True)
     status = Column(String(30))
-    applicantId = MappedColumn(ForeignKey('User.id'))
-    applicant = Relationship('User', back_populates="User")
-    workerId = MappedColumn(ForeignKey('User.id'))
-    worker = Relationship('User', back_populates='User')
-    offerId = MappedColumn(ForeignKey('Offer.id'))
-    offer = Relationship('Offer', back_populates='Offer')
-    resumeId = MappedColumn(ForeignKey('Resume.id'))
-    resume = Relationship('Resume', back_populates='Resume')
+    applicant_id = MappedColumn(ForeignKey('User.id'))
+    applicant = Relationship('User', foreign_keys=[applicant_id])
+    recruiter_id = MappedColumn(ForeignKey('User.id'))
+    recruiter = Relationship('User', foreign_keys=[recruiter_id])
+    offer_id = MappedColumn(ForeignKey('Offer.id'))
+    # offer = Relationship('Offer', back_populates='Offer')
+    resume_id = MappedColumn(ForeignKey('Resume.id'))
+    resume = Relationship('Resume', back_populates='application')
 
-    def __Application__(self, status):
-        self.status = status
+    def __init__(self, applicant_id, offer_id):
+        self.status = "New"
+        self.applicant_id = applicant_id
+        # self.recruiter_id = recruiter_id
+        self.offer_id = offer_id
