@@ -44,3 +44,15 @@ def create_new_user(user_data: NewUserDto) -> int:
         new_account_id = new_account.id
         session.commit()
     return new_account_id
+
+def get_user_by_id(user_id: int):
+    with Session(DB.get_instance().engine) as session:
+        query = select(User).where(User.id == user_id)
+        user = session.execute(query).scalar()
+
+        query = select(Account).where(Account.user_id == user_id)
+        account = session.execute(query).scalar()
+    return {"first_name": user.first_name,
+            "last_name": user.last_name,
+            "email_address": account.email_address,
+            "account_type": account.account_type}
