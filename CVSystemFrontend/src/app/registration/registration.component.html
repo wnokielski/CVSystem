@@ -1,0 +1,30 @@
+<form (ngSubmit)="registerUser()" #userForm="ngForm">
+  <div class="field">
+    <label class="label" for="firstName">First name:</label>
+    <input type="text" id="firstName" name="firstName" [(ngModel)]="firstName" required>
+  </div>
+  <div class="field">
+    <label class="label" for="lastName">Last name:</label>
+    <input type="text" id="lastName" name="lastName" [(ngModel)]="lastName" required>
+  </div>
+  <div class="field">
+    <label class="label" for="email">E-mail:</label>
+    <input type="text" id="email" name="lastName" [(ngModel)]="email" required>
+  </div>
+  <div class="field">
+    <label class="label" for="password">Password:</label>
+    <input type="password" id="password" name="lastName" [(ngModel)]="password" required>
+  </div>
+  <div class="field">
+    <label class="label" for="birthdate">Birth date:</label>
+    <input type="date" id="birthdate" name="birthdate" [(ngModel)]="birthDate" required>
+  </div>
+  <div class="field">
+    <label class="label" for="accountType">Account type:</label>
+    <select id="accountType" name="accountType" [(ngModel)]="accountType" required>
+      <option value="applicant">applicant</option>
+      <option value="recruiter">recruiter</option>
+    </select>
+  </div>
+  <button type="submit" [disabled]="!userForm.form.valid">Zarejestruj</button>
+</form>

@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'CVSystemFrontend';
+  isUserLoggedIn = false;
+
+  login() {
+    // Logika logowania
+    // Po poprawnym zalogowaniu ustaw wartość isUserLoggedIn na true
+    this.isUserLoggedIn = true;
+  }
+
+  logout() {
+    // Logika wylogowania
+    // Po wylogowaniu ustaw wartość isUserLoggedIn na false
+    this.isUserLoggedIn = false;
+  }
 }
