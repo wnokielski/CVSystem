@@ -10,6 +10,7 @@ from src.v1.offers.router import router as offers_router
 from src.v1.users.router import router as users_router
 from src.core.models.base import Base
 from src.core.utils.database import DB
+from fastapi.middleware.cors import CORSMiddleware
 
 engine = DB.get_instance().engine
 Base.metadata.create_all(engine)
@@ -20,3 +21,13 @@ app.include_router(auth_router, prefix="/auth")
 app.include_router(applications_router, prefix="/applications")
 app.include_router(offers_router, prefix="/offers")
 app.include_router(users_router, prefix="/users")
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
