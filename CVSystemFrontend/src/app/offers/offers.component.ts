@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {API_URL} from "../../common/consts";
 import {UserDetails} from "../../common/models/user";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {StateService} from "../state.service";
+import {Offer} from "../../common/models/offer";
 
 @Component({
   selector: 'app-offers',
@@ -11,6 +12,8 @@ import {StateService} from "../state.service";
   styleUrls: ['./offers.component.css']
 })
 export class OffersComponent {
+
+  offers: Offer[] = [];
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -33,6 +36,28 @@ export class OffersComponent {
         }
       );
     }
+
+    this.http.get(`${API_URL}/offers/all`).subscribe(
+      response => {
+        console.log('Response:', response)
+        this.offers = (response) as Offer[]
+      },
+      error => {
+        console.error('Error:', error);
+        alert(error.error.detail)
+      }
+    );
+  }
+
+  isUserTypeApplicant() {
+    console.log(`User type: ${this.stateService.accountType}`)
+    console.log(this.stateService.accountType == "applicant")
+    return this.stateService.accountType == "applicant"
+  }
+
+  applyForOffer(offer: any) {
+    // Logika dla akceptacji elementu
+    console.log('Applied for offer:', offer);
   }
 
 }
