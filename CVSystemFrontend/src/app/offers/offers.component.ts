@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {StateService} from "../state.service";
 import {Offer} from "../../common/models/offer";
+import {NewApplication} from "../../common/models/application";
 
 @Component({
   selector: 'app-offers',
@@ -56,8 +57,16 @@ export class OffersComponent {
   }
 
   applyForOffer(offer: any) {
-    // Logika dla akceptacji elementu
-    console.log('Applied for offer:', offer);
+    this.http.post(`${API_URL}/applications`, new NewApplication(offer.id, this.stateService.userID)).subscribe(
+      response => {
+        console.log('Response:', response);
+      },
+      error => {
+        console.error('Error:', error);
+        alert(error.error.detail)
+      }
+    );
+    console.log('Applied for offer:', offer.id);
   }
 
 }
