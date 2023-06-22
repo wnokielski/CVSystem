@@ -1,0 +1,26 @@
+#main-div {
+  text-align: center;
+}
+
+#title {
+  margin: 3em;
+  background-color: whitesmoke;
+  color: darkblue;
+}
+
+.link {
+  border: 2px solid skyblue;
+  padding: 1em;
+  background-color: darkcyan;
+  margin: 1em;
+  color: whitesmoke;
+}
+
+.router-outlet {
+  margin: 5em;
+}
+
+#hello {
+  font-size: 18pt;
+  margin: 2em;
+}

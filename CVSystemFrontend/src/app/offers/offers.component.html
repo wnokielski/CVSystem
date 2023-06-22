@@ -1,0 +1,22 @@
+<div>
+  <table id="offers-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Company</th>
+      <th>Position</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let offer of offers">
+      <td>{{ offer.id }}</td>
+      <td>{{ offer.companyName }}</td>
+      <td>{{ offer.position }}</td>
+      <td>
+        <button *ngIf="isUserTypeApplicant()" (click)="applyForOffer(offer)">Apply</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

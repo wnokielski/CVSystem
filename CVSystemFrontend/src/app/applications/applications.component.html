@@ -1,0 +1,30 @@
+<div>
+  <table id="applications-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Offer ID</th>
+      <th>Status</th>
+      <th *ngIf="isUserTypeApplicant()">Recruiter ID</th>
+      <th *ngIf="!isUserTypeApplicant()">Applicant ID</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let application of applications">
+      <td>{{ application.id }}</td>
+      <td>{{ application.offer_id }}</td>
+      <td>{{ application.status }}</td>
+      <td *ngIf="isUserTypeApplicant()">{{ application.recruiter_id }}</td>
+      <td *ngIf="!isUserTypeApplicant()">{{ application.applicant_id }}</td>
+      <td>
+        <button *ngIf="!isUserTypeApplicant()" (click)="acceptApplication(application)">Accept</button>
+      </td>
+      <td>
+        <button *ngIf="!isUserTypeApplicant()" (click)="rejectApplication(application)">Reject</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

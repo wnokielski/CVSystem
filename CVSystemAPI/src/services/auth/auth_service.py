@@ -48,4 +48,5 @@ def create_bearer_token(authorization: str):
                "exp": (datetime.now() + timedelta(days=1))}
     token = jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
 
-    return {"token": token}
+    return {"token": token,
+            "user_id": user.id}
