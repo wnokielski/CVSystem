@@ -8,15 +8,12 @@ class User(Base):
     __tablename__ = 'User'
 
     id = Column(Integer, primary_key=True)
-    emailAddress = Column(String(50))
-    firstName = Column(String(30))
-    lastName = Column(String(30))
-    birthDate = Column(Date)
-    applicant = Relationship('Application', back_populates='Application')
-    worker = Relationship('Application', back_populates='Application')
-    account = Relationship('Account', back_populates='Account')
+    first_name = Column(String(30))
+    last_name = Column(String(30))
+    birth_date = Column(Date)
+    account = Relationship('Account', back_populates='user')
 
-    def __User__(self, email, fn, ln):
-        self.emailAddress = email
-        self.firstName = fn
-        self.lastName = ln
+    def __init__(self, fn, ln, bd):
+        self.first_name = fn
+        self.last_name = ln
+        self.birth_date = bd

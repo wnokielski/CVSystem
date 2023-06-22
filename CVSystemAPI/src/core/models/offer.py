@@ -10,4 +10,8 @@ class Offer(Base):
     id = Column(Integer, primary_key=True)
     companyName = Column(String(30))
     position = Column(String(50))
-    application = Relationship('Application', back_populates='Application')
+    applications = Relationship('Application')
+
+    def __init__(self, company_name, position):
+        self.companyName = company_name
+        self.position = position
